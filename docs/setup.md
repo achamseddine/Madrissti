@@ -17,21 +17,23 @@ PYTHONPATH=backend .venv/bin/uvicorn tutor.main:create_app --factory --host 127.
 
 `GET /health` reports backend health and explicitly unavailable inference/voice. `/docs` exposes OpenAPI. Authenticate with `POST /v1/demo/auth`, then use the returned bearer token for catalogue/session routes. Each sign-in currently represents a separate fictional identity; resumable identity and presenter auth are future work.
 
-## Flutter prerequisite and next proof gate
+## Flutter and Android build
 
-Allow `storage.googleapis.com` in environment settings and install a checksum-verified stable Flutter SDK from official release metadata. Record the installed Flutter/Dart versions, resolve `app/pubspec.yaml`, and commit `app/pubspec.lock`. No Flutter version or lockfile is claimed until this actually runs.
+Installed toolchain: Flutter stable 3.47.7, Dart 3.13.5, Android SDK/target 36, build tools 36.0.0 and Temurin JDK 21.0.12.1 (including javac). Minimum Android version is API 29 (Android 10). Flutter archive SHA256 and Android command-line tools checksum were verified against official release metadata. The Android project and app dependency lockfile are committed.
 
-After the SDK is available, from `app/` generate Android scaffolding without replacing the existing Dart source:
+From the repository root:
 
 ```sh
-flutter create --platforms=android --project-name madrissti_prototype --org org.madrissti .
-flutter pub get
-flutter analyze
-flutter test
+bash scripts/install-android-tools.sh
+bash scripts/build-apk.sh
 ```
 
-Set Android minSdk to 29 and add only INTERNET and microphone permissions when implementing the voice spike. Keep API keys backend-only. Configure Android SDK with Flutter's current supported Android tooling and accept the required licenses. Run `flutter doctor -v` before `flutter build apk --debug`; debug APK output is `app/build/app/outputs/flutter-apk/app-debug.apk`. Release signing is not configured.
+The toolchain is retained outside the checkout at `/workspace/toolchains`. The install script reuses it and verifies downloaded archives when installing it afresh. `scripts/android-env.sh` sets workspace cache paths and disables tooling analytics. Gradle is limited to two workers and a 3 GiB heap. Java downloads use the provided HTTPS proxy without extracting credentials. The JDK uses the system Java trust store to preserve the environment certificate authorities.
 
-Implement and verify the live provider transport against current official OpenAI Realtime documentation before claiming AI availability. `REALTIME_MODEL=gpt-realtime` is a candidate, not an account-verified model. `TUTOR_PROVIDER_KEY` is reserved for future backend provider configuration and is not read by this foundation. Supply secrets through secure environment settings, never chat.
+Dart analysis still uses `/home/agent/.dartServer`; in a read-only home sandbox, grant write access to that specific cache directory before analysis. Do not change HOME or disable TLS/checksum verification.
 
-Use an HTTPS backend for device/shared demonstrations. Android emulator host routing differs from physical-device networking. Do not enable broad cleartext exceptions in release builds. Test microphone denial, interruption, cancellation and text alternatives on a real tablet before completing the voice gate.
+The APK is a debug-signed development build, not a production release. No release signing key is configured. Android scaffold has no microphone permission because live voice is not implemented. Do not add permissions before implementing their actual use. APK functionality is bundled Arabic lessons and fraction-bar examples; no backend login or AI connection is wired into this client.
+
+Live model transport remains the next proof gate. Verify current official OpenAI Realtime documentation and account availability before implementing provider calls. `REALTIME_MODEL=gpt-realtime` is a candidate, not a tested model. `TUTOR_PROVIDER_KEY` documents a future backend-only credential and is not consumed by this foundation. Supply credentials through secure environment settings, never chat.
+
+Use HTTPS for a shared backend demonstration. Android emulator host routing differs from physical-device networking; localhost on a tablet is not the developer's computer. Test microphone denial, interruption, cancellation and text alternatives on a physical tablet before claiming the voice gate passed.

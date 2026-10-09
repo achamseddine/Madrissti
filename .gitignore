@@ -8,3 +8,4 @@ build/
 app/.flutter-plugins*
 app/android/local.properties
 *.jks
+artifacts/

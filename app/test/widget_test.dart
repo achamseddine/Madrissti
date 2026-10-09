@@ -10,7 +10,11 @@ void main() {
     )));
     await tester.pumpAndSettle();
     expect(find.text('رياضيات الصف الرابع'), findsOneWidget);
-    expect(find.byType(ListTile), findsNWidgets(3));
+    expect(find.text('الكسور: أجزاء متساوية'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('مقارنة كسور الوحدة'), 150);
+    expect(find.text('مقارنة كسور الوحدة'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('القسمة: توزيع بالتساوي'), 150);
+    expect(find.text('القسمة: توزيع بالتساوي'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }
