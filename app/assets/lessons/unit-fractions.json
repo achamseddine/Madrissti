@@ -1,0 +1,44 @@
+{
+  "lesson_id": "unit-fractions",
+  "title": "مقارنة كسور الوحدة",
+  "content_version": "1.0.0",
+  "objectives": [
+    {
+      "objective_id": "unit-fractions-objective",
+      "observable_outcome": "مقارنة كسور الوحدة للكل نفسه",
+      "mastery_policy_id": "demo-v1"
+    }
+  ],
+  "prerequisites": [
+    "العد",
+    "أجزاء متساوية"
+  ],
+  "blocks": [
+    {
+      "block_id": "intro",
+      "type": "paragraph",
+      "text": "عندما يكون الكل نفسه، النصف أكبر من الربع لأن قطعة النصف أكبر."
+    }
+  ],
+  "glossary": {
+    "الكل": "الشكل أو الكمية كاملة"
+  },
+  "common_misconceptions": [
+    "المقام الأكبر يعني كسراً أكبر",
+    "يمكن مقارنة كلين مختلفين دون تحديد حجمهما",
+    "الربع أكبر من النصف"
+  ],
+  "approved_representations": [
+    "fraction_bars",
+    "number_line"
+  ],
+  "assessment_blueprints": [
+    {
+      "type": "new_task",
+      "requires_independent_response": true
+    }
+  ],
+  "source_refs": [
+    "Original demonstration content; educator review pending"
+  ]
+}

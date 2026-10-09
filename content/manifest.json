@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "package_id": "grade4-maths",
+  "package_version": "1.0.0",
+  "title": "رياضيات الصف الرابع",
+  "language": "ar",
+  "grade": 4,
+  "subject": "mathematics",
+  "rights": "Original demonstration content",
+  "review_status": "pending_educator_review",
+  "assets": [],
+  "lessons": [
+    {
+      "lesson_id": "equal-parts",
+      "path": "lessons/equal-parts.json",
+      "order": 0
+    },
+    {
+      "lesson_id": "unit-fractions",
+      "path": "lessons/unit-fractions.json",
+      "order": 1
+    },
+    {
+      "lesson_id": "equal-sharing",
+      "path": "lessons/equal-sharing.json",
+      "order": 2
+    }
+  ]
+}

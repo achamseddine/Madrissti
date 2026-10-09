@@ -1,0 +1,44 @@
+{
+  "lesson_id": "equal-parts",
+  "title": "الكسور: أجزاء متساوية",
+  "content_version": "1.0.0",
+  "objectives": [
+    {
+      "objective_id": "equal-parts-objective",
+      "observable_outcome": "تمييز أجزاء الكل المتساوية",
+      "mastery_policy_id": "demo-v1"
+    }
+  ],
+  "prerequisites": [
+    "العد",
+    "أجزاء متساوية"
+  ],
+  "blocks": [
+    {
+      "block_id": "intro",
+      "type": "paragraph",
+      "text": "نقسم الكل إلى أجزاء متساوية. جزء واحد من أربعة أجزاء هو ربع."
+    }
+  ],
+  "glossary": {
+    "الكل": "الشكل أو الكمية كاملة"
+  },
+  "common_misconceptions": [
+    "الأجزاء غير المتساوية تمثل كسراً",
+    "المقام يعد الأجزاء المظللة",
+    "البسط يعد جميع الأجزاء"
+  ],
+  "approved_representations": [
+    "fraction_bars",
+    "number_line"
+  ],
+  "assessment_blueprints": [
+    {
+      "type": "new_task",
+      "requires_independent_response": true
+    }
+  ],
+  "source_refs": [
+    "Original demonstration content; educator review pending"
+  ]
+}

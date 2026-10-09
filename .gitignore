@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+*.db
+.dart_tool/
+build/
+app/.flutter-plugins*
+app/android/local.properties
+*.jks
